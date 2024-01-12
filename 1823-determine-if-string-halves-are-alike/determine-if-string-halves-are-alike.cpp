@@ -7,7 +7,6 @@ public:
             return false;
         }
         int half=n/2;
-        vector<string>s1;
         int c1=0;
         for(int x=0;x<half;x++)
         {
