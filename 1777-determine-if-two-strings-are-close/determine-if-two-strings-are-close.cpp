@@ -11,14 +11,14 @@ public:
             return false;
         }
 
-        std::set<char> s1(word1.begin(), word1.end());
-        std::set<char> s2(word2.begin(), word2.end());
+        set<char> s1(word1.begin(), word1.end());
+        set<char> s2(word2.begin(), word2.end());
 
         if (s1 != s2) {
             return false;
         }
 
-        std::map<char, int> m1, m2;
+        map<char, int> m1, m2;
 
         for (char c : word1) {
             m1[c]++;
@@ -28,18 +28,18 @@ public:
             m2[c]++;
         }
 
-        std::vector<int> l1 = populateVector(m1);
-        std::vector<int> l2 = populateVector(m2);
+        vector<int> l1 = populateVector(m1);
+        vector<int> l2 = populateVector(m2);
 
-        std::sort(l1.begin(), l1.end());
-        std::sort(l2.begin(), l2.end());
+        sort(l1.begin(), l1.end());
+        sort(l2.begin(), l2.end());
 
         return l1 == l2;
     }
 
 private:
-    std::vector<int> populateVector(const std::map<char, int>& m) {
-        std::vector<int> result;
+    vector<int> populateVector(const std::map<char, int>& m) {
+        vector<int> result;
         for (const auto& kv : m) {
             result.push_back(kv.second);
         }
