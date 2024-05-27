@@ -1,23 +1,33 @@
 class Solution {
 public:
     int specialArray(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+        int low=0;
         int n=nums.size();
-        
-        for(int i=0;i<=n;i++)
+        int high=n;
+        while(low<=high)
         {
             int chk=0;
-            for(int j=0;j<n;j++)
+            int mid=low+(high-low)/2;
+            for(int num:nums)
             {
-                if(nums[j]>=i)
+                if(num>=mid)
                 {
                     chk++;
                 }
             }
-            if(chk==i)
+            if(chk==mid)
             {
-                return chk;
+                return mid;
             }
-            
+            else if(chk>mid)
+            {
+                low=mid+1;
+            }
+            else{
+                high=mid-1;
+            }
+
         }
         return -1;
     }
