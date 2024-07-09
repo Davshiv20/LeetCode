@@ -1,32 +1,29 @@
-#include <unordered_map>
-#include <vector>
-#include <algorithm>
-
 class Solution {
 public:
+    int comp(int a,int b)
+    {
+        return a>b;
+    }
     string frequencySort(string s) {
-        // Step 1: Count the frequency of each character
-        unordered_map<char, int> charCount;
-        for (char c : s) {
-            charCount[c]++;
+        unordered_map<char,int>mp;
+        for(auto i:s)
+        {
+            mp[i]++;
         }
-
-        // Step 2: Sort characters based on their frequency in descending order
-        vector<char> sortedChars;
-        for (const auto& entry : charCount) {
-            sortedChars.push_back(entry.first);
-        }
-        sort(sortedChars.begin(), sortedChars.end(), [&](char a, char b) {
-            return charCount[a] > charCount[b];
+        string res="";
+        vector<pair<char, int>> elems(mp.begin(), mp.end());
+  sort(elems.begin(), elems.end(), [](pair<char, int> a, pair<char, int> b) {
+            return a.second > b.second;
         });
-
-        // Step 3: Build the result string by repeating characters according to their frequency
-        string result;
-        for (char c : sortedChars) {
-            result += string(charCount[c], c);
+        for(auto i:elems)
+        {
+            cout<<"letter:"<<i.first<<" ";
+            cout<<"freq:"<<i.second<<endl;
+            while(i.second--)
+            {
+                res+=i.first;
+            }
         }
-
-        // Step 4: Return the final sorted string
-        return result;
+        return res;
     }
 };
