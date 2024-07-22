@@ -1,26 +1,22 @@
 class Solution {
 public:
     int longestOnes(vector<int>& nums, int k) {
+        int maxLen=INT_MIN;
+        int n=nums.size();
         int l=0;
-        int r=0;
-        int wind=0;
-        int maxWind=0;
         unordered_map<int,int>mp;
-        for(r=0;r<nums.size();r++)
+        for(int r=0;r<n;r++)
         {
             mp[nums[r]]++;
             while(mp[0]>k)
             {
-                cout<<"r"<<r;
-               
-               
-                mp[nums[l]]--;
+                  mp[nums[l]]--;
                 l++;
-                
-                  cout<<"maxwind"<<maxWind<<endl;
+              
             }
-             maxWind=max(r-l+1,maxWind);
+            int len=r-l+1;
+            maxLen=max(len,maxLen);
         }
-        return maxWind;
+        return maxLen;
     }
 };
