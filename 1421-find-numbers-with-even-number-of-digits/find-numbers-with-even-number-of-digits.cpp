@@ -1,17 +1,18 @@
 class Solution {
 public:
     int findNumbers(vector<int>& nums) {
-        int count =0;
-        for(auto i:nums){
-            int check =0;
-            while(i!=0){
-                i=i/10;
-                check+=1;
+        int n= nums.size();
+        int res =0;
+        for(int i =0;i<n; i++){
+            int eve = 0;
+            while(nums[i]!=0){
+                nums[i]/=10;
+                eve ++;
             }
-            if(check%2==0){
-                count+=1;
+            if(eve%2 ==0){
+                res +=1;
             }
         }
-        return count;
+        return res;
     }
 };
